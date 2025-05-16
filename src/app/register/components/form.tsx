@@ -11,8 +11,6 @@ const VISAS = [
 
 export default function RegisterForm() {
   async function handleSubmit(formData: FormData) {
-    "use server";
-
     const firstName = formData.get("firstName");
     const lastName = formData.get("lastName");
     const email = formData.get("email");
