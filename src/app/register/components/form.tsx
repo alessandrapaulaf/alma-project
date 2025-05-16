@@ -32,7 +32,7 @@ export default function RegisterForm() {
           Your information was submitted to our team of immigration attorneys.
           Expect an email from hello@tryalma.ai.
         </p>
-        <button onClick={() => router.push('/login')}>Go Back to HomePage</button>
+        <button type='button' onClick={() => router.push('/login')}>Go Back to HomePage</button>
       </div>
     );
   }

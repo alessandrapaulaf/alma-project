@@ -1,7 +1,9 @@
 "use server";
 
+import { Lead } from "@/types/Lead";
 import { VisaEnum } from "@/types/Visa";
 import { File } from "buffer";
+import { cookies } from "next/headers";
 import { z, ZodFormattedError } from "zod";
 
 const FormSchema = z.object({
@@ -9,7 +11,9 @@ const FormSchema = z.object({
   lastName: z.string().min(1, "Last name is required"),
   email: z.string().email("Invalid email address"),
   linkedIn: z.string().url("Invalid URL"),
-  visas: z.array(z.nativeEnum(VisaEnum)).min(1, "At least one visa option is required"),
+  visas: z
+    .array(z.nativeEnum(VisaEnum))
+    .min(1, "At least one visa option is required"),
   resume: z.instanceof(File).refine((file) => file.size <= 5 * 1024 * 1024, {
     message: "File size must be less than 5MB",
   }),
@@ -45,13 +49,24 @@ export async function handleSubmit(
     additionalInfo,
   });
 
-
   if (!parsed.success) {
     return {
       success: false,
       errors: parsed.error.format(),
     };
   }
+
+  const body: Lead = {
+    id: Math.floor(Math.random() * 1000000),
+    name: `${parsed.data.firstName} ${parsed.data.lastName}`,
+    submitted: new Date().toISOString(),
+    status: "Pending",
+    country: "USA",
+  };
+
+  const cookieStore = await cookies();
+  const currentLeads = JSON.parse(cookieStore.get("leads")?.value ?? "[]");
+  cookieStore.set("leads", JSON.stringify([...currentLeads, body]));
 
   return {
     success: true,

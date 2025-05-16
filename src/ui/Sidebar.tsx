@@ -17,7 +17,7 @@ export default function Sidebar({ children }: PropsWithChildren<{}>) {
           <h2 className="text-xl font-bold">Alma</h2>
           <nav className="flex flex-col space-y-2">
             <Link
-              href="/"
+              href="/leads"
               className="hover:bg-gray-200 px-3 py-2 rounded-md transition"
             >
               Leads
@@ -34,7 +34,7 @@ export default function Sidebar({ children }: PropsWithChildren<{}>) {
 
       {isOpen && (
         <button
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+          className="fixed inset-0 bg-white bg-opacity-50 z-30 md:hidden"
           onClick={() => setIsOpen(false)}
           aria-label="Close sidebar"
         />
