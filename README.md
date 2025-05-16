@@ -29,7 +29,7 @@ http://localhost:3000
 http://localhost:3000/register
 ```
 
-4. For Admin panel, acess:
+4. For Admin panel, access:
 ``` 
 http://localhost:3000/login
 user: admin@alma.com
