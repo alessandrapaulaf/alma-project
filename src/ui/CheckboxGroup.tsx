@@ -1,13 +1,13 @@
 type CheckboxGroupProps = {
   options: { value: string; label: string }[];
   name: string;
-  id: string;
+  error?: { _errors: string[] } | null;
 };
 
 export default function CheckboxGroup({
   options,
   name,
-  id,
+  error = null,
 }: CheckboxGroupProps) {
   return (
     <fieldset className="space-y-2">
@@ -26,12 +26,21 @@ export default function CheckboxGroup({
                   value={option.value}
                   className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                 />
-                <span className="text-sm text-gray-700">{option.value}</span>
+                <span className="text-sm text-gray-700">{option.label}</span>
               </label>
             </div>
           );
         })}
       </div>
+      {error && (
+        <p
+          id={`${name}-error`}
+          role="alert"
+          className="mt-1 text-xs text-red-600"
+        >
+          {error["_errors"].join(", ")}
+        </p>
+      )}
     </fieldset>
   );
 }
