@@ -57,7 +57,7 @@ export async function handleSubmit(
   }
 
   const body: Lead = {
-    id: Math.floor(Math.random() * 1000000),
+    id: Math.floor(Math.random() * 1000000).toString(),
     name: `${parsed.data.firstName} ${parsed.data.lastName}`,
     submitted: new Date().toISOString(),
     status: "Pending",

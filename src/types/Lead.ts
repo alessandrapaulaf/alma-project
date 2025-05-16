@@ -1,5 +1,5 @@
 export type Lead = {
-  id: number;
+  id: string;
   name: string;
   submitted: string;
   status: "Pending" | "Reached Out";

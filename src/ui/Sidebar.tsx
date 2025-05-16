@@ -23,10 +23,10 @@ export default function Sidebar({ children }: PropsWithChildren<{}>) {
               Leads
             </Link>
             <Link
-              href="/settings"
+              href="/register"
               className="hover:bg-gray-200 px-3 py-2 rounded-md transition"
             >
-              Settings
+              New Lead
             </Link>
           </nav>
         </div>
