@@ -38,6 +38,10 @@ password: 12345678
 
 ### Decisions
 
+- Styling: Tailwind CSS is used for styling.
+- API Layer: API routes (e.g., /api/login, /api/lead) handle server-side logic for authentication and lead management.
+- State Management: React’s built-in hooks (useState, useActionState) manage local and form state.
+
 Authentication
 - LoginForm handles user login, submitting credentials to /api/login and navigating to /leads on success.
 - User logs in via LoginForm > API call to /api/login > On success, navigates to /leads.
