@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { PropsWithChildren, useState } from "react";
 
-export default function Sidebar({ children }: PropsWithChildren<{}>) {
+export default function Sidebar({ children }: PropsWithChildren<object>) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
